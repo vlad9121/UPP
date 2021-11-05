@@ -41,11 +41,12 @@ public class PlayerCntrl : MonoBehaviour
     
     private void Jump()
     {
+        if(isgrounded)
         rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
     }
     private void CheckGround()
     {
-        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 3f);
+        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 2f);
         isgrounded = collider.Length > 1;
     }
 }
