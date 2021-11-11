@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class CamMove : MonoBehaviour
 {
-    public GameObject player;
+    [SerializeField] private Transform player;
+    private Vector3 pos;
 
-    void FixedUpdate()
+    private void Awake()
     {
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -10f);
+        if (!player)
+            player = FindObjectOfType<PlayerCntrl>().transform;
+    }
+
+    private void Update()
+    {
+        pos = player.position;
+        pos.z = -10f;
+        transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime);
     }
 }
