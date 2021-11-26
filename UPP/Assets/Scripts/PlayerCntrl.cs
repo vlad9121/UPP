@@ -39,6 +39,8 @@ public class PlayerCntrl : MonoBehaviour
             FlipPlayer();
             playerIsFacingRight = false;
         }
+
+
     }
     private void Update()
     {
@@ -61,15 +63,16 @@ public class PlayerCntrl : MonoBehaviour
     
     private void Jump()
     {
-        if (isgrounded)
+        if (isgrounded)//if(Physics2D.OverlapCircle((transform.position - new Vector3(0,1,0)), 0.3f, 2))
         {
             anim.SetInteger("state", 3);
             rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
         }
-        }
-        private void CheckGround()
+    }
+
+    private void CheckGround()
     {
-        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 2f);
+        Collider2D[] collider = Physics2D.OverlapCircleAll((transform.position - new Vector3(0,1,0)),0.2f);
         isgrounded = collider.Length > 1;
         if (!isgrounded) State = States.jump;
     }
@@ -80,6 +83,7 @@ public class PlayerCntrl : MonoBehaviour
         transform.localScale = playerScale;
     }
 }
+
 
 public enum States
 {

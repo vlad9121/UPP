@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class DestroyPlatform : MonoBehaviour
 {
-    public SpriteRenderer spriteRender;
-    public GameObject ObjectOld;
+    public GameObject BrokenOj;
     public GameObject ObjectNew1;
     public GameObject ObjectNew2;
     public GameObject ObjectNew3;
-    public GameObject sprite;
     public Sprite sprite1;
     public AudioClip clip;
     public AudioClip clip2;
@@ -36,12 +34,17 @@ public class DestroyPlatform : MonoBehaviour
             }
             timer += Time.deltaTime;
             if (timer > 3)
-            { 
-                ObjectOld.SetActive(false);
-                ObjectNew1.SetActive(true);
-                ObjectNew2.SetActive(true);
-                ObjectNew3.SetActive(true);
-                broking = false;
+            {
+                //ObjectOld.SetActive(false);
+                BrokenOj.SetActive(false);
+                Instantiate(ObjectNew1, transform.position, Quaternion.identity);
+                Instantiate(ObjectNew2, transform.position, Quaternion.identity);
+                Instantiate(ObjectNew3, transform.position, Quaternion.identity);
+                //ObjectNew1.SetActive(true);
+                //ObjectNew2.SetActive(true);
+                //ObjectNew3.SetActive(true);
+                Destroy(this.gameObject);
+                //broking = false;
             }
         }
     }
@@ -53,8 +56,10 @@ public class DestroyPlatform : MonoBehaviour
         {
             print("Просчёт коллайдера произошёл");
             broking = true;
-            spriteRender.sprite = sprite1;
-            sprite.transform.localScale = new Vector3(0.58f, 0.58f, 1f);
+            GetComponent<SpriteRenderer>().sprite = null;
+            BrokenOj.SetActive(true);
+            //spriteRender.sprite = sprite1;
+            //sprite.transform.localScale = new Vector3(0.58f, 0.58f, 1f);
             GetComponent<AudioSource> ().PlayOneShot (clip);
         }
 
