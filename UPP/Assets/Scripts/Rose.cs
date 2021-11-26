@@ -40,7 +40,7 @@ public class Rose : MonoBehaviour
         if (other.name == "Player" && !take)
         {
             take = true;
-            ScoreTxt.GetComponent<Score>().Roses++;
+            ScoreTxt.GetComponent<Score>().TakenRoses++;
             //StartCoroutine("Anim");            
         }
     }
