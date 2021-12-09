@@ -52,8 +52,8 @@ public class PlayerCntrl : MonoBehaviour
             Run();
         else if (isgrounded)
             State = States.idle;
-        if (verticalMove >= 0.5f)
-            Jump();
+        /* if (verticalMove >= 0.5f)
+            Jump(); */
     }
 
     private void Run()
@@ -95,6 +95,10 @@ public class PlayerCntrl : MonoBehaviour
         if (!isgrounded) State = States.jump;
     }
     
+    public void OnJumpButtonDown()
+    {
+        Jump();
+    }
 
     private void FlipPlayer()
     {
