@@ -82,7 +82,7 @@ public class PlayerCntrl : MonoBehaviour
     
     private void CheckGround()
     {
-        Collider2D[] collider = Physics2D.OverlapCircleAll((transform.position - new Vector3(0, 0.7f,0)),0.2f);
+        Collider2D[] collider = Physics2D.OverlapCircleAll((transform.position - new Vector3(0, 1,0)),0.2f);
         ObjectCount = collider.Length;
         for (int i = 0; i < collider.Length; i++)
         {
