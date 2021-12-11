@@ -55,8 +55,9 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Trap")
         {
           health--;
-          spriteRend.material = matBlink;
+            spriteRend.material = matBlink;
             Invoke("ResetMaterial", .2f);
+
         }
     }
 }
