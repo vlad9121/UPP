@@ -12,9 +12,13 @@ public class Rose : MonoBehaviour
     private bool take;
     private Renderer RoseRend;
     private Color RoseColor;
+    public AudioClip RosePickup;
+    private AudioSource RoseAudio;
+
     void Start()
     {
         ScoreTxt = GameObject.Find("Score");
+        RoseAudio = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -40,7 +44,10 @@ public class Rose : MonoBehaviour
         if (other.name == "Player" && !take)
         {
             take = true;
-            ScoreTxt.GetComponent<Score>().TakenRoses++;
+            if (!RoseAudio.isPlaying)
+                RoseAudio.PlayOneShot(RosePickup);
+        }
+        ScoreTxt.GetComponent<Score>().TakenRoses++;
             //StartCoroutine("Anim");            
         }
     }
@@ -56,4 +63,4 @@ public class Rose : MonoBehaviour
     //    }
     //    Destroy(this.gameObject);
     //}
-}
+

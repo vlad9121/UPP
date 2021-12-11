@@ -16,6 +16,8 @@ public class PlayerCntrl : MonoBehaviour
     private bool faceRight = true;
     public Joystick joystick;
     private int ObjectCount;
+    public AudioClip[] footsteps;
+    private AudioSource playerAudio;
 
     private States State
     {
@@ -28,6 +30,7 @@ public class PlayerCntrl : MonoBehaviour
         rb = GetComponent<Rigidbody2D> ();
         anim = GetComponent<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+        playerAudio = GetComponent<AudioSource>();
     }
     private void FixedUpdate()
     {
@@ -58,10 +61,16 @@ public class PlayerCntrl : MonoBehaviour
 
     private void Run()
     {
-        if (isgrounded) State = States.run;
-        /*
-        moveInput = Input.GetAxis("Horizontal");
-        */
+        if (isgrounded)
+        {
+            State = States.run;
+            FootStep();
+        }
+            /*
+            moveInput = Input.GetAxis("Horizontal");
+             GetComponent<AudioSource>().PlayOneShot(StepSound);
+            */
+
         moveInput = joystick.Horizontal;
         /*
         Vector3 dir = transform.right * Input.GetAxis("Horizontal");
@@ -105,6 +114,13 @@ public class PlayerCntrl : MonoBehaviour
         Vector3 playerScale = transform.localScale;
         playerScale.x *= -1;
         transform.localScale = playerScale;
+    }
+    
+    private void FootStep()
+    {
+        int randInd = Random.Range(0, footsteps.Length);
+        if (!playerAudio.isPlaying)
+            playerAudio.PlayOneShot(footsteps[randInd]);
     }
 }
 
