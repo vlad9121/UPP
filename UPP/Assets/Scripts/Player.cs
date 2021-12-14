@@ -5,11 +5,16 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public GameObject Star;
     public int health = 0;
+    public int Dir;
+    public float ImmortalTime;
     public float end_line;
     public Image[] hearts;
     public SpriteRenderer spriteRend;
     public GameObject reload_button;
+    public bool dmg;
+    public bool isThrow;
     private Material matBlink;
     private Material matDefault;
 
@@ -43,21 +48,51 @@ public class Player : MonoBehaviour
         {
             health = 0;
         }
+
+        if (Input.GetKey(KeyCode.F) && !isThrow)
+        {
+            Shoot();
+        }
+
+    }
+
+    void Shoot()
+    {
+        isThrow = true;
+        if (transform.eulerAngles.y == 0)
+        {
+            Dir = 1;
+        }
+        else
+        {
+            Dir = -1;
+        }
+        Instantiate(Star, transform.position + new Vector3(Dir, 1, 0), Quaternion.identity);
+        //Star.GetComponent<Star>()/
     }
 
     void ResetMaterial()
     {
-        spriteRend.material = matDefault;
+        dmg = false;
+        spriteRend.color = new Color(1, 1, 1);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Trap")
         {
-          health--;
-            spriteRend.material = matBlink;
-            Invoke("ResetMaterial", .2f);
+            Damage();
+        }
+    }
 
+    public void Damage()
+    {
+        if (!dmg)
+        {
+            health--;
+            spriteRend.color = new Color(1,0,0);
+            dmg = true;
+            Invoke("ResetMaterial", ImmortalTime);
         }
     }
 }

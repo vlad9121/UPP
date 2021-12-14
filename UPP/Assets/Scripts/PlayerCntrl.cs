@@ -57,6 +57,7 @@ public class PlayerCntrl : MonoBehaviour
             State = States.idle;
         /* if (verticalMove >= 0.5f)
             Jump(); */
+
     }
 
     private void Run()
@@ -111,9 +112,17 @@ public class PlayerCntrl : MonoBehaviour
 
     private void FlipPlayer()
     {
-        Vector3 playerScale = transform.localScale;
-        playerScale.x *= -1;
-        transform.localScale = playerScale;
+        //Vector3 playerScale = transform.localScale;
+        //playerScale.x *= -1;
+        //transform.localScale = playerScale;
+        if (transform.eulerAngles.y == 0)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+        else
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
     }
     
     private void FootStep()

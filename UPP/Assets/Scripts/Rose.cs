@@ -46,10 +46,11 @@ public class Rose : MonoBehaviour
             take = true;
             if (!RoseAudio.isPlaying)
                 RoseAudio.PlayOneShot(RosePickup);
+            ScoreTxt.GetComponent<Score>().TakenRoses++;
         }
-        ScoreTxt.GetComponent<Score>().TakenRoses++;
-            //StartCoroutine("Anim");            
-        }
+        //StartCoroutine("Anim");            
+
+    }
     }
     //IEnumerator Anim()
     //{
