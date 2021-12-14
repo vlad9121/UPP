@@ -7,6 +7,7 @@ TagManager:
   - Hero
   - Rose
   - Trap
+  - Star
   layers:
   - Default
   - TransparentFX
