@@ -7,9 +7,11 @@ public class Star : MonoBehaviour
     public float force;
     public int Dir = 0;
     private Rigidbody2D rg;
+     public AudioClip spawn;
 
     void Start()
     {
+        GetComponent<AudioSource>().PlayOneShot(spawn);
         Dir = GameObject.Find("Player").GetComponent<Player>().Dir;
         rg = GetComponent<Rigidbody2D>();
         rg.velocity = new Vector2(Dir * transform.localScale.x, 1) * force;
@@ -20,6 +22,7 @@ public class Star : MonoBehaviour
         //rg.velocity = new Vector2(transform.localScale.x, 1) * force;
         if (transform.position.y < -10)
         {
+            GameObject.Find("Player").GetComponent<Player>().isThrow = false;
             Destroy(this.gameObject);
         }
     }

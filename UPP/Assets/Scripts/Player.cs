@@ -49,15 +49,13 @@ public class Player : MonoBehaviour
             health = 0;
         }
 
-        if (Input.GetKey(KeyCode.F) && !isThrow)
-        {
-            Shoot();
-        }
+      
 
     }
 
-    void Shoot()
+   public void Shoot()
     {
+        if (!isThrow) {
         isThrow = true;
         if (transform.eulerAngles.y == 0)
         {
@@ -68,6 +66,7 @@ public class Player : MonoBehaviour
             Dir = -1;
         }
         Instantiate(Star, transform.position + new Vector3(Dir, 1, 0), Quaternion.identity);
+        }
         //Star.GetComponent<Star>()/
     }
 
@@ -92,7 +91,7 @@ public class Player : MonoBehaviour
             health--;
             spriteRend.color = new Color(1,0,0);
             dmg = true;
-            Invoke("ResetMaterial", ImmortalTime);
+            Invoke("ResetMaterial", 0.5f);
         }
     }
 }

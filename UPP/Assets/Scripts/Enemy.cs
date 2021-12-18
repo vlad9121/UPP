@@ -10,11 +10,16 @@ public class Enemy : MonoBehaviour
     private GameObject Player;
     private bool Target;
     private Animator anim;
+    private AudioSource EnemyAudio;
+    public AudioClip patrol, attack, death;
+    public SpriteRenderer sprite;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         Player = GameObject.Find("Player");
+        EnemyAudio = GetComponent<AudioSource>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -30,6 +35,8 @@ public class Enemy : MonoBehaviour
 
     void Patrol()
     {
+         if (!EnemyAudio.isPlaying)
+            EnemyAudio.PlayOneShot(patrol);
         //anim.SetBool("Attack", false);
         if (transform.position.x > RightPoint.position.x - 0.7f)
         {
@@ -68,6 +75,8 @@ public class Enemy : MonoBehaviour
 
     void Attack()
     {
+        EnemyAudio.Stop();
+        EnemyAudio.PlayOneShot(attack);
         if (transform.position.x < Player.transform.position.x)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
@@ -102,7 +111,13 @@ public class Enemy : MonoBehaviour
     {
         if(collision.tag == "Star")
         {
-            Destroy(this.gameObject);
+            sprite.color = new Color(1,0,0);
+            EnemyAudio.Stop();
+        EnemyAudio.PlayOneShot(death);
+            Invoke("Death", 1f);
         }
+    }
+    void Death() {
+Destroy(this.gameObject);
     }
 }

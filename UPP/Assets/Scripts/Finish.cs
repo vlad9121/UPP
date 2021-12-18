@@ -30,7 +30,7 @@ public class Finish : MonoBehaviour
         {
             if(CurrentLvl>= PlayerPrefs.GetInt("levels"))
             {
-                PlayerPrefs.SetInt("levels", CurrentLvl + 1);
+                PlayerPrefs.SetInt("levels", CurrentLvl+1);
             }
             Time.timeScale = 0;
             Menu.SetActive(true);
