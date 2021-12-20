@@ -8,10 +8,13 @@ public class Menu : MonoBehaviour
 {
     public Button[] Lvls;
     public GameObject LoadingScreen;
-    private int UnLockLvl;
+    public Text lists;
+    public Text lvls;
+    [SerializeField] private int UnLockLvl;
 
     void Start()
     {
+        PlayerPrefs.SetInt("levels", 7);
         UnLockLvl = PlayerPrefs.GetInt("levels", 1);
 
         for (int i = 0; i < UnLockLvl && Lvls[i]; i++)
@@ -22,7 +25,15 @@ public class Menu : MonoBehaviour
 
     void Update()
     {
-        
+        if(GameObject.Find("Button (1)"))
+        {
+            lists.text = "1 / 2";
+        }
+        else
+        {
+            lists.text = "2 / 2";
+        }
+        lvls.text = "Пройдено уровней " + PlayerPrefs.GetInt("levels", 1) + " / 8";
     }
 
     public void LoadLvl(int lvlIndex)

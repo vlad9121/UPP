@@ -138,6 +138,8 @@ MonoBehaviour:
   force: 10
   Dir: 1
   spawn: {fileID: 8300000, guid: 8b6b39c2783f32646914810ac86e7bf0, type: 3}
+  speed: 10
+  back: 0
 --- !u!82 &-5529400869500221352
 AudioSource:
   m_ObjectHideFlags: 0

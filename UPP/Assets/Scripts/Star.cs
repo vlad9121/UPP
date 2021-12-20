@@ -8,11 +8,13 @@ public class Star : MonoBehaviour
     public int Dir = 0;
     private Rigidbody2D rg;
      public AudioClip spawn;
+    private Transform Player;
 
     void Start()
     {
         GetComponent<AudioSource>().PlayOneShot(spawn);
         Dir = GameObject.Find("Player").GetComponent<Player>().Dir;
+        Player = GameObject.Find("Player").GetComponent<Transform>();
         rg = GetComponent<Rigidbody2D>();
         rg.velocity = new Vector2(Dir * transform.localScale.x, 1) * force;
     }

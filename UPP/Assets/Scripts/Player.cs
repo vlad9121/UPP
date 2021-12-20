@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
         {
             Time.timeScale = 0;
             reload_button.SetActive(true);
+            reload_button.GetComponent<Restart>().txt.text = "Вы погибли";
         }
       
 
@@ -91,7 +92,7 @@ public class Player : MonoBehaviour
             health--;
             spriteRend.color = new Color(1,0,0);
             dmg = true;
-            Invoke("ResetMaterial", 0.5f);
+            Invoke("ResetMaterial", 1f);
         }
     }
 }
