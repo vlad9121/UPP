@@ -57,7 +57,8 @@ public class PlayerCntrl : MonoBehaviour
             State = States.idle;
         /* if (verticalMove >= 0.5f)
             Jump(); */
-
+        if (Input.GetKey(KeyCode.Space))
+            Jump();
     }
 
     private void Run()
