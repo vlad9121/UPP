@@ -23,6 +23,7 @@ public class Rose : MonoBehaviour
 
     void FixedUpdate()
     {
+         ScoreTxt = GameObject.Find("Score");
         if (take)
         {
             RoseColor = GetComponent<Renderer>().material.color;

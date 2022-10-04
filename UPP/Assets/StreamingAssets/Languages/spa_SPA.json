@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "key": "The little Prince",
+      "value": "El Principito"
+    },
+    {
+      "key": "Language",
+      "value": "IDIOMA"
+    },
+    {
+      "key": "Passed levels",
+      "value": "Niveles pasados"
+    },
+    {
+      "key": "Level",
+      "value": "Nivel"
+    },
+    {
+      "key": "Pause",
+      "value": "Pausa"
+    },
+    {
+      "key": "Tap the screen to shoot",
+      "value": "Toca la pantalla para disparar"
+    }
+  ]
+}

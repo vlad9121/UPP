@@ -8,6 +8,7 @@ TagManager:
   - Rose
   - Trap
   - Star
+  - LocalizationManager
   layers:
   - Default
   - TransparentFX

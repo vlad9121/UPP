@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "key": "The little Prince",
+      "value": "Маленький Принц"
+    },
+    {
+      "key": "Language",
+      "value": "ЯЗЫК"
+    },
+    {
+      "key": "Passed levels",
+      "value": "Пройдено уровней"
+    },
+    {
+      "key": "Level",
+      "value": "Уровень"
+    },
+    {
+      "key": "Pause",
+      "value": "Пауза"
+    },
+    {
+      "key": "Tap the screen to shoot",
+      "value": "Нажми на экран, чтобы выстрелить"
+    }
+  ]
+}
